@@ -74,6 +74,12 @@ Biaya deploy: gas (floor 1 ugnot / 1000 gas) + storage deposit 100 ugnot
 per byte kode/state. Verifikasi setelah deploy di:
 `https://latest.testnets.gno.land/r/g1yyyk53j9ahtvfjp2h4nmngjxhxug3kq8rdkyek/token`
 
-Catatan: `gnokey` (klien HTTP Go) gagal TLS lewat egress proxy VM ini —
-`deploy.sh` sudah menyiapkan fallback (sign offline + broadcast via curl)
-kalau `-broadcast` gagal, sama seperti `../deploy.sh`.
+**Status deploy: SUDAH DEPLOYED** ke Onyx testnet 26 Nov 2026 — blok 1421114,
+tx `6c2d0f0f4e70942a1a2b3e8f0b2d6a81ccc0ddc5b05bb7363c0cb28449a9f044`.
+Realm masih antre review GPAS (mode inert Onyx); halaman gnoweb
+menampilkan "Not Yet Enabled" sampai auto-approval (~1 jam setelah pass).
+
+Catatan: `gnokey` (klien HTTP Go) gagal TLS lewat egress proxy VM ini, dan
+broadcast via `curl` POST juga terbukti gagal konsisten (param `tx` kosong
+di node). `deploy.sh` memakai jalur offline yang terbukti jalan: sign offline
++ broadcast via Python urllib (`../broadcast_tx.py`).
